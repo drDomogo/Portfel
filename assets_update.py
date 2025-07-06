@@ -12,14 +12,14 @@ if 'cena' not in df.columns:
 # 3. Aktualizuj kolumnę 'cena'
 for i, row in df.iterrows():
     symbol = row['ticker']
-    if symbol == "PLN":
+    if symbol == "none":
         pass
     else:
 
         ticker = yf.Ticker(symbol)
 
         try:
-            data = ticker.history(period="1d")
+            data = ticker.history(period="3d")
             price = data['Close'].iloc[-1]
             currency=str(ticker.info.get("currency", "Brak danych"))
 
